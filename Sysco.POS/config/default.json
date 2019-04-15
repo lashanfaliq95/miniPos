@@ -1,5 +1,5 @@
 {
   "dbConfig": {
-    "url": "mongodb://localhost:27017/syscopos"
+    "url": "mongodb://lashan:lashan123@ds139896.mlab.com:39896/heroku_1jhgnm8c"
   }
 }
