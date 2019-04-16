@@ -4,14 +4,13 @@
   "description": "Mini Pos system",
   "main": "index.js",
   "scripts": {
-    "client": "cd react-pos && npm install &&  npm start",
-    "server": "cd Sysco.POS && npm install &&  npm start",
-    "start": "concurrently  -  kill-others \"npm run server\" \"npm run client\""
+    "client": "cd react-pos  &&  npm start",
+    "server": "cd Sysco.POS  &&  npm start",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.11"
+    "concurrently": "^4.1.0"
   }
 }
