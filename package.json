@@ -6,8 +6,8 @@
   "scripts": {
     "client": "cd react-pos  && npm install &&  npm start",
     "server": "cd Sysco.POS  &&  npm install && npm start",
-    "start": " \"npm run server\" ",
-"heroku-postbuild":"\"npm run client\""
+    "start": " cd Sysco.POS  &&  npm install && npm start" ",
+"heroku-postbuild":"cd react-pos  && npm install &&  npm start"
   },
   "author": "",
   "license": "ISC",
