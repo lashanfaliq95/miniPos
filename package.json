@@ -2,7 +2,7 @@
   "name": "pos",
   "version": "1.0.0",
   "description": "Mini Pos system",
-  "main": "index.js",
+  "main": "react-pos/src/index.js",
   "scripts": {
     "client": "cd react-pos  && npm install &&  npm start",
     "server": "cd Sysco.POS  &&  npm install && npm start",
