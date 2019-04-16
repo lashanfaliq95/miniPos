@@ -6,7 +6,8 @@
   "scripts": {
     "client": "cd react-pos  && npm install &&  npm start",
     "server": "cd Sysco.POS  &&  npm install && npm start",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": " \"npm run server\" ",
+"heroku-postbuild":"\"npm run client\""
   },
   "author": "",
   "license": "ISC",
