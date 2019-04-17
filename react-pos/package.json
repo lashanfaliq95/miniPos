@@ -21,9 +21,10 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve  -l 3001 -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
