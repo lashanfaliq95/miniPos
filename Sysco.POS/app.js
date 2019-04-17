@@ -69,9 +69,16 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, '/../react-pos/build')));
+
 app.use("/users", users);
 app.use("/items", items);
 app.use("/orders", orders);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../react-pos/build/index.html'));
+});
+
 
 //app.use(express.static(path.join(__dirname, "public")));
 /// catch 404 and forwarding to error handler
