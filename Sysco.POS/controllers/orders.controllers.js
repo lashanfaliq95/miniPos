@@ -148,7 +148,10 @@ exports.updateItemsOnOrder = (req, res, next) => {
             }
 
             newqty = items[index].item.qtyonstock - value;
-            ItemController.setItemQtyThroughOrder(items[index].item._id, newqty);
+            ItemController.setItemQtyThroughOrder(
+              items[index].item._id,
+              newqty
+            );
             orderamount += value;
           } else {
             if (items[index].orderamount < Math.abs(value)) {
@@ -157,7 +160,10 @@ exports.updateItemsOnOrder = (req, res, next) => {
               });
             }
             newqty = items[index].item.qtyonstock + Math.abs(value);
-            ItemController.setItemQtyThroughOrder(items[index].item._id, newqty);
+            ItemController.setItemQtyThroughOrder(
+              items[index].item._id,
+              newqty
+            );
             orderamount -= Math.abs(value);
           }
           order.items[index].item.qtyonstock = newqty;
@@ -251,8 +257,13 @@ exports.addItemToAnOrder = (req, res, next) => {
           itemModel
             .findOne({ _id: req.params.item_id })
             .then(item => {
-              const newItem = { item: item, orderamount: 1 };
-              ItemController.AddItemToOrder(req.params.item_id);
+              let newItem;
+              if (item.qtyonstock > 0) {
+                newItem = { item: item, orderamount: 1 };
+                ItemController.AddItemToOrder(req.params.item_id);
+              } else {
+                newItem = { item: item, orderamount: 0 };
+              }
               order.items.push(newItem);
               order.save();
               return res.status(200).send(order);
