@@ -1,6 +1,6 @@
 const order = require("../models/orders");
 const mongoose = require("mongoose");
-const Item = require("./items.controllers");
+const ItemController = require("./items.controllers");
 const itemModel = require("../models/items");
 
 // Create an order
@@ -148,7 +148,7 @@ exports.updateItemsOnOrder = (req, res, next) => {
             }
 
             newqty = items[index].item.qtyonstock - value;
-            Item.setItemQtyThroughOrder(items[index].item._id, newqty);
+            ItemController.setItemQtyThroughOrder(items[index].item._id, newqty);
             orderamount += value;
           } else {
             if (items[index].orderamount < Math.abs(value)) {
@@ -157,7 +157,7 @@ exports.updateItemsOnOrder = (req, res, next) => {
               });
             }
             newqty = items[index].item.qtyonstock + Math.abs(value);
-            item.setItemQtyThroughOrder(items[index].item._id, newqty);
+            ItemController.setItemQtyThroughOrder(items[index].item._id, newqty);
             orderamount -= Math.abs(value);
           }
           order.items[index].item.qtyonstock = newqty;
@@ -207,7 +207,7 @@ exports.removeItemsOnOrder = (req, res, next) => {
 
           //remove all items from order
           const newqty = items[index].item.qtyonstock + orderamount;
-          Item.setItemQtyThroughOrder(items[index].item._id, newqty);
+          ItemController.setItemQtyThroughOrder(items[index].item._id, newqty);
 
           //remove item from array
           let removeditem = items[index].item;
@@ -252,7 +252,7 @@ exports.addItemToAnOrder = (req, res, next) => {
             .findOne({ _id: req.params.item_id })
             .then(item => {
               const newItem = { item: item, orderamount: 1 };
-              Item.AddItemToOrder(req.params.item_id);
+              ItemController.AddItemToOrder(req.params.item_id);
               order.items.push(newItem);
               order.save();
               return res.status(200).send(order);
