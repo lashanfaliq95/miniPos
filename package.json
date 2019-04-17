@@ -2,12 +2,11 @@
   "name": "pos",
   "version": "1.0.0",
   "description": "Mini Pos system",
-  "main": "react-pos/src/index.js",
   "scripts": {
     "client": "cd react-pos  && npm install &&  npm start",
     "server": "cd Sysco.POS  &&  npm install && npm start",
     "start":"concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-"heroku-postbuild":"cd react-pos  && npm install &&  npm build"
+"heroku-postbuild":"cd react-pos  && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
