@@ -102,7 +102,7 @@ export function deleteAllItems() {
 export function getAllItems(items) {
   return dispatch => {
     axios
-      .get(URL + "items/getallitems", { withCredentials: true })
+      .get(URL + "/items/getallitems", { withCredentials: true })
       .then(res => {
         let allItemsNew = [];
 
@@ -140,7 +140,7 @@ export function getAllItems(items) {
 }
 
 export function getOrderItems(orderId) {
-  const url = URL + "orders/getorder/" + orderId;
+  const url = URL + "/orders/getorder/" + orderId;
   return dispatch => {
     axios
       .get(url, { withCredentials: true })
@@ -167,7 +167,7 @@ export function getOrderItems(orderId) {
 
 export function deleteOrderItemPUT(orderId, itemId) {
   return dispatch => {
-    const deleteUrl = URL + "orders/removeorderitems/" + orderId + "/" + itemId;
+    const deleteUrl = URL + "/orders/removeorderitems/" + orderId + "/" + itemId;
     axios(deleteUrl, {
       method: "put",
       withCredentials: true
@@ -192,7 +192,7 @@ export function deleteOrderItemPUT(orderId, itemId) {
 
 export function addOrderItemPUT(orderId, itemId) {
   return dispatch => {
-    const url = URL + "orders/addorderitems/" + orderId + "/" + itemId;
+    const url = URL + "/orders/addorderitems/" + orderId + "/" + itemId;
 
     axios(url, {
       method: "put",
@@ -218,7 +218,7 @@ export function addOrderItemPUT(orderId, itemId) {
 
 export function updateOrderItemQtyPUT(num, orderId, itemId) {
   return dispatch => {
-    const updateurl = URL + "orders/updateorderitems/" + orderId + "/" + itemId;
+    const updateurl = URL + "/orders/updateorderitems/" + orderId + "/" + itemId;
 
     axios(updateurl, {
       method: "put",
