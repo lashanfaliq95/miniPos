@@ -115,3 +115,16 @@ exports.setItemQtyThroughOrder = (item_id, newQty) => {
       console.log(err);
     });
 };
+
+
+// update an items quantity when an item is added to an order
+exports.AddItemToOrder = (item_id) => {
+  item
+    .findOneAndUpdate({ _id: item_id }, { $inc: { qtyonstock: -1}})
+    .then(item => {
+      console.log(item);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

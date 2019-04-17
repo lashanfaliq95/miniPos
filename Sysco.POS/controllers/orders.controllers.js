@@ -251,7 +251,8 @@ exports.addItemToAnOrder = (req, res, next) => {
           itemModel
             .findOne({ _id: req.params.item_id })
             .then(item => {
-              const newItem = { item: item, orderamount: 0 };
+              const newItem = { item: item, orderamount: 1 };
+              item.AddItemToOrder(req.params.item_id);
               order.items.push(newItem);
               order.save();
               return res.status(200).send(order);
